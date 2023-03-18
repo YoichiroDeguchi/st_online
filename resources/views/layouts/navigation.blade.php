@@ -28,10 +28,10 @@
                         {{ __('予約状況確認') }}
                     </x-nav-link>
                 </div>
-                <!-- 利用者管理ボタン -->
+                <!-- 利用者一覧ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('patient.index')" :active="request()->routeIs('patient.index')">
-                        {{ __('利用者管理') }}
+                        {{ __('利用者一覧') }}
                     </x-nav-link>
                 </div>
                 <!-- 新規利用者作成ボタン -->
@@ -40,6 +40,20 @@
                         {{ __('新規利用者作成') }}
                     </x-nav-link>
                 </div>
+                @can('admin-higher')　{{-- 管理者にのみ表示される --}}
+                <!-- スタッフ一覧ボタン -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                        {{ __('スタッフ一覧') }}
+                    </x-nav-link>
+                </div>
+                <!-- 新規スタッフ作成ボタン -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('user.create')">
+                        {{ __('新規スタッフ作成') }}
+                    </x-nav-link>
+                </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->
@@ -107,10 +121,10 @@
                 {{ __('予約状況確認') }}
             </x-responsive-nav-link>
         </div>
-        <!-- 利用者管理ボタン -->
+        <!-- 利用者一覧ボタン -->
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('patient.index')" :active="request()->routeIs('patient.index')">
-                {{ __('利用者管理') }}
+                {{ __('利用者一覧') }}
             </x-responsive-nav-link>
         </div>
         <!-- 新規利用者作成ボタン -->
@@ -119,6 +133,20 @@
                 {{ __('新規利用者作成') }}
             </x-responsive-nav-link>
         </div>
+        @can('admin-higher')　{{-- 管理者にのみ表示される --}}
+        <!-- スタッフ一覧ボタン -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                {{ __('スタッフ一覧') }}
+            </x-responsive-nav-link>
+        </div>
+        <!-- 新規スタッフ作成ボタン -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('user.create')" :active="request()->routeIs('user.create')">
+                {{ __('新規スタッフ作成') }}
+            </x-responsive-nav-link>
+        </div>
+        @endcan
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

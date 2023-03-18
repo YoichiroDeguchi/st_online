@@ -7,6 +7,7 @@ use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\StaffmanagementController;
 use App\Http\Controllers\StafflistController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -37,22 +38,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [TopController::class, 'top'])
     ->name('top');
 
-// 管理画面
-Route::get('/management', [ManagementController::class, 'management'])
-    ->name('management');
-
-// スタッフ管理
-Route::get('/staffmanagement', [StaffmanagementController::class, 'staffmanagement'])
-    ->name('staffmanagement');
-
-// スタッフ一覧画面
-Route::get('/stafflist', [StafflistController::class, 'stafflist'])
-    ->name('stafflist');
-
 // patient
 Route::middleware('auth')->group(function () { //認証状態のチェック：ログインしてないと全てログイン画面に飛ばす
     Route::resource('patient', PatientController::class);
 });
+
+//user
+Route::resource('user', UserController::class);
 
 // オンライン同行申し込み画面
 Route::get('/application', [ApplicationController::class, 'application'])
