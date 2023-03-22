@@ -3,13 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
-use App\Http\Controllers\ManagementController;
-use App\Http\Controllers\StaffmanagementController;
-use App\Http\Controllers\StafflistController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ZoomAuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 
@@ -38,6 +36,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [TopController::class, 'top'])
     ->name('top');
 
+//フォーム画面
+Route::get('/form', function () {
+    return view('zoom.form');
+})->name('base');
+
 // patient
 Route::middleware('auth')->group(function () { //認証状態のチェック：ログインしてないと全てログイン画面に飛ばす
     Route::resource('patient', PatientController::class);
@@ -45,6 +48,14 @@ Route::middleware('auth')->group(function () { //認証状態のチェック：�
 
 //user
 Route::resource('user', UserController::class);
+
+//zooom
+Route::get('/zoom/authorize', [ZoomAuthController::class, 'redirectToProvider'])->name('zoom.authorize');
+Route::get('/zoom/callback', [ZoomAuthController::class, 'callback']);
+Route::post('/zoom/meeting/create', [ZoomAuthController::class, 'createMeeting'])->name('create.meeting');
+Route::get('/zoom/meeting/create', function () {
+    return view('zoom.create_meeting');
+})->name('create.meeting.form');
 
 // オンライン同行申し込み画面
 Route::get('/application', [ApplicationController::class, 'application'])

@@ -11,7 +11,8 @@
 <body>
     <div class="text-center text-2xl font-bold">STオンライン</div>
     <div class="text-center">
-        <a href="{{ route('login') }}">ログイン</a>
+        <a href="{{ route('login') }}">ログイン（一般）</a>
+        <a href="{{ route('admin.login') }}">ログイン（管理者）</a>
         <a href="{{ route('register') }}">アカウント作成</a>
     </div>
 </body>

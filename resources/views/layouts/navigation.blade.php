@@ -18,7 +18,7 @@
                 </div>
                 <!-- オンライン同行申し込みボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('application')" :active="request()->routeIs('application')">
+                    <x-nav-link :href="route('create.meeting')" :active="request()->routeIs('application')">
                         {{ __('オンライン同行申し込み') }}
                     </x-nav-link>
                 </div>
