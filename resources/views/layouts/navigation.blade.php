@@ -18,13 +18,13 @@
                 </div>
                 <!-- オンライン同行申し込みボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('create.meeting')" :active="request()->routeIs('application')">
+                    <x-nav-link :href="route('create_meeting')" :active="request()->routeIs('create_meeting')">
                         {{ __('オンライン同行申し込み') }}
                     </x-nav-link>
                 </div>
                 <!-- 予約状況確認ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('reservation')" :active="request()->routeIs('reservation')">
+                    <x-nav-link :href="route('my_meetings')" :active="request()->routeIs('my_meetings')">
                         {{ __('予約状況確認') }}
                     </x-nav-link>
                 </div>
@@ -111,13 +111,13 @@
         </div>
         <!-- オンライン同行申し込みボタン -->
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('application')" :active="request()->routeIs('application')">
+            <x-responsive-nav-link :href="route('create_meeting')" :active="request()->routeIs('create_meeting')">
                 {{ __('オンライン同行申し込み') }}
             </x-responsive-nav-link>
         </div>
         <!-- 予約状況確認ボタン -->
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('reservation')" :active="request()->routeIs('reservation')">
+            <x-responsive-nav-link :href="route('my_meetings')" :active="request()->routeIs('my_meetings')">
                 {{ __('予約状況確認') }}
             </x-responsive-nav-link>
         </div>

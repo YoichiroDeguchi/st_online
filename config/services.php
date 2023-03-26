@@ -32,9 +32,8 @@ return [
     ],
 
     'zoom' => [
-        'client_id' => env('ZOOM_CLIENT_ID'),
-        'client_secret' => env('ZOOM_CLIENT_SECRET'),
-        'redirect' => env('ZOOM_REDIRECT_URI'),
+        'api_key' => env('ZOOM_API_KEY'),
+        'api_secret' => env('ZOOM_API_SECRET'),
     ],
 
 ];

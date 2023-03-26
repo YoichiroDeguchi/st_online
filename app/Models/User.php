@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return self::orderBy('updated_at', 'desc')->get();
     }
+
+    public function meetings()
+    {
+        return $this->hasMany(Meeting::class);
+    }
 }
