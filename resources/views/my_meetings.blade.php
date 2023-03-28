@@ -27,6 +27,13 @@
                 <td>{{ $meeting->disease }}</td>
                 <td>{{ $meeting->consultation }}</td>
                 <td><a href="{{ $meeting->join_url }}" target="_blank">Join</a></td>
+                <td>
+                    <form action="{{ route('delete_meeting', $meeting->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">取消</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

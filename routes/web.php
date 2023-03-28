@@ -51,6 +51,7 @@ Route::get('/create-meeting', function () {
 });
 Route::post('/create-meeting', [ZoomMeetingController::class, 'createMeeting'])->name('create_meeting');
 Route::get('/my-meetings', [ZoomMeetingController::class, 'myMeetings'])->name('my_meetings');
+Route::delete('/delete_meeting/{id}', [ZoomMeetingController::class, 'destroy'])->name('delete_meeting');
 
 // 予約状況確認画面
 Route::get('/reservation', [ReservationController::class, 'reservation'])
