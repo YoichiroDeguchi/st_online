@@ -30,7 +30,7 @@
                 </div>
                 <!-- 利用者一覧ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('patient.index')" :active="request()->routeIs('patient.index')">
+                    <x-nav-link :href="route('patient.mypage')" :active="request()->routeIs('patient.mypage')">
                         {{ __('利用者一覧') }}
                     </x-nav-link>
                 </div>
@@ -41,16 +41,28 @@
                     </x-nav-link>
                 </div>
                 @can('admin-higher')　{{-- 管理者にのみ表示される --}}
+                <!-- 全予約状況確認ボタン -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('zoom.index')" :active="request()->routeIs('zoom.index')">
+                        {{ __('全予約状況確認') }}
+                    </x-nav-link>
+                </div>
+                <!-- 全利用者一覧ボタン -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('patient.index')" :active="request()->routeIs('patient.index')">
+                        {{ __('全利用者一覧') }}
+                    </x-nav-link>
+                </div>
                 <!-- スタッフ一覧ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        {{ __('スタッフ一覧') }}
+                        {{ __('事業所一覧') }}
                     </x-nav-link>
                 </div>
                 <!-- 新規スタッフ作成ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('register')" :active="request()->routeIs('user.create')">
-                        {{ __('新規スタッフ作成') }}
+                        {{ __('新規事業所作成') }}
                     </x-nav-link>
                 </div>
                 @endcan
@@ -134,6 +146,18 @@
             </x-responsive-nav-link>
         </div>
         @can('admin-higher')　{{-- 管理者にのみ表示される --}}
+        <!-- 全予約状況確認ボタン -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('zoom.index')" :active="request()->routeIs('zoom.index')">
+                {{ __('全予約状況確認') }}
+            </x-responsive-nav-link>
+        </div>
+        <!-- 全利用者一覧ボタン -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('patient.index')" :active="request()->routeIs('patient.index')">
+                {{ __('全利用者一覧') }}
+            </x-responsive-nav-link>
+        </div>
         <!-- スタッフ一覧ボタン -->
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">

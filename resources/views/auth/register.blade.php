@@ -1,5 +1,7 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    {{-- <form method="POST" action="{{ route('register') }}"> --}}
+    <form method="POST" action="{{ Auth::check() ? route('register-logged-in') : route('register') }}">
+
         @csrf
 
         <!-- Name -->

@@ -58,6 +58,14 @@ class ZoomMeetingController extends Controller
         return view('meeting_created', ['meeting' => $data]);
     }
 
+    // adminが全リンクを確認するページ
+    public function index()
+    {
+        $meetings = Meeting::get();
+        return response()->view('zoomindex',compact('meetings'));
+    }
+
+    // マイページ
     public function myMeetings()
     {
         $meetings = Meeting::where('user_id', Auth::id())->get();

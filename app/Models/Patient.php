@@ -19,4 +19,9 @@ class Patient extends Model
     {
         return self::orderBy('updated_at', 'desc')->get();
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

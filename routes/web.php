@@ -7,10 +7,11 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ReservationController;
-// use App\Http\Controllers\ZoomAuthController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\ZoomMeetingController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,25 +34,42 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/register-logged-in', [RegisteredUserController::class, 'storeForLoggedInUsers'])->name('register-logged-in');
+});
+
 // 総合トップ
 Route::get('/', [TopController::class, 'top'])
     ->name('top');
 
 // patient
 Route::middleware('auth')->group(function () { //認証状態のチェック：ログインしてないと全てログイン画面に飛ばす
+    Route::get('/patient/mypage', [PatientController::class, 'mydata'])->name('patient.mypage');
     Route::resource('patient', PatientController::class);
 });
 
 //user
-Route::resource('user', UserController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('user', UserController::class);
+});
 
 //zooom
-Route::get('/create-meeting', function () {
-    return view('create_meeting');
+Route::middleware('auth')->group(function () {
+    Route::get('/create-meeting', function () {
+        return view('create_meeting');
+    });
+    Route::post('/create-meeting', [ZoomMeetingController::class, 'createMeeting'])->name('create_meeting');
+    Route::get('/my-meetings', [ZoomMeetingController::class, 'myMeetings'])->name('my_meetings');
+    Route::delete('/delete_meeting/{id}', [ZoomMeetingController::class, 'destroy'])->name('delete_meeting');
+    Route::get('/zoomindex', [ZoomMeetingController::class, 'index'])
+    ->name('zoom.index');
 });
-Route::post('/create-meeting', [ZoomMeetingController::class, 'createMeeting'])->name('create_meeting');
-Route::get('/my-meetings', [ZoomMeetingController::class, 'myMeetings'])->name('my_meetings');
-Route::delete('/delete_meeting/{id}', [ZoomMeetingController::class, 'destroy'])->name('delete_meeting');
+
+// 利用者詳細ページのコメント（録画リンク共有）
+Route::post('/patients/{patient}/comments', [CommentController::class, 'store'])->name('patients.comments.store');
+Route::get('/patients/{patient}', [PatientController::class, 'show'])->name('patients.show');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
 
 // 予約状況確認画面
 Route::get('/reservation', [ReservationController::class, 'reservation'])

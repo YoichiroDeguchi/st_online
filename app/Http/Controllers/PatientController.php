@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Patient;
+use Auth;
+use App\Models\User;
 
 class PatientController extends Controller
 {
@@ -19,7 +21,7 @@ class PatientController extends Controller
         return response()->view('patient.indexpatient',compact('patients'));
     }
 
-    /**
+    /** 
      * 利用者新規作成画面
      *
      * @return \Illuminate\Http\Response
@@ -51,7 +53,8 @@ class PatientController extends Controller
             ->withErrors($validator);
         }
 
-        $result = Patient::create($request->all());
+        $data = $request->merge(['user_id' => Auth::user()->id])->all();
+        $result = Patient::create($data);
         return redirect()->route('patient.index');
     }
 
@@ -120,4 +123,16 @@ class PatientController extends Controller
         $patient = Patient::find($id)->delete();
         return redirect()->route('patient.index');
     }
+
+    public function mydata()
+    {
+        // Userモデルに定義したリレーションを使用してデータを取得する．
+        $patients = User::query()
+        ->find(Auth::user()->id)
+        ->userPatients()
+        ->orderBy('created_at','desc')
+        ->get();
+        return response()->view('patient.indexpatient', compact('patients'));
+    }
+
 }
