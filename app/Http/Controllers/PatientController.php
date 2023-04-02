@@ -42,7 +42,7 @@ class PatientController extends Controller
         // バリデーション
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'birthdate' => 'required',
+            'birthdate' => 'required|date_format:Y-m-d',
             'disease_name' => 'required',
         ]);
         // バリデーション:エラー
@@ -55,7 +55,7 @@ class PatientController extends Controller
 
         $data = $request->merge(['user_id' => Auth::user()->id])->all();
         $result = Patient::create($data);
-        return redirect()->route('patient.index');
+        return redirect()->route('patient.mypage');
     }
 
     /**

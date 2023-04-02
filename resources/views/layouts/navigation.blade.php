@@ -16,6 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @can('user-higher')
                 <!-- オンライン同行申し込みボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('create_meeting')" :active="request()->routeIs('create_meeting')">
@@ -40,6 +41,7 @@
                         {{ __('新規利用者作成') }}
                     </x-nav-link>
                 </div>
+                @endcan
                 @can('admin-higher')　{{-- 管理者にのみ表示される --}}
                 <!-- 全予約状況確認ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
