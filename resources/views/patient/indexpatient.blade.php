@@ -19,12 +19,12 @@
               @foreach ($patients as $patient)
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-                  <a href="{{ route('patient.show',$patient->id) }}">
-                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$patient->name}}</h3>
-                  </a>
                   <div class="flex">
+                    <a href="{{ route('patient.show',$patient->id) }}">
+                        <h3 class="mt-3 text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$patient->name}}</h3>
+                    </a>
                     <!-- 更新ボタン -->
-                    <form action="{{ route('patient.edit',$patient->id) }}" method="GET" class="text-left">
+                    <form action="{{ route('patient.edit',$patient->id) }}" method="GET" class="ml-4 text-left">
                       @csrf
                       <x-primary-button class="ml-3">
                         <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="gray">

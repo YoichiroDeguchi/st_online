@@ -21,7 +21,7 @@
             </div>
 
             <div class="flex flex-col mb-4">
-              <x-input-label for="birthdate" :value="__('生年月日')" />
+              <x-input-label for="birthdate" :value="__('生年月日（YYYY-MM-DD）')" />
               <x-text-input id="birthdate" class="block mt-1 w-full" type="text" name="birthdate" value="{{$patient->birthdate}}" autofocus />
               <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
             </div>

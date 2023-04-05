@@ -96,7 +96,7 @@ class PatientController extends Controller
         //バリデーション
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'birthdate' => 'required',
+            'birthdate' => 'required|date_format:Y-m-d',
             'disease_name' => 'required',
         ]);
         //バリデーション:エラー

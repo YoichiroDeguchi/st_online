@@ -32,32 +32,38 @@
               </p>
             </div>
 
-            @can('admin-higher')
-            <!-- コメント入力 -->
-            <form action="{{ route('patients.comments.store', $patient->id) }}" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="body">録画リンク入力欄</label>
-                    <textarea name="body" id="body" rows="3" class="form-control"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">リンクを共有</button>
-            </form>
-            @endcan
-
             <!-- コメント一覧 -->
+            <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">録画リンク</p>
             @foreach($patient->comments as $comment)
-                <div>
-                    {{-- <strong>{{ $comment->user->name }}:</strong> --}}
-                    <p class="comment-body">{{ $comment->body }}</p>
+                <div class="flex items-center">
+                    <div class="w-3/4 mb-3">
+                        <p class="comment-body">{{ $comment->body }}</p>
+                    </div>
                     @can('admin-higher')
-                    <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">削除</button>
-                    </form>
+                    <div class="ml-6">
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                        </form>
+                    </div>
                     @endcan
                 </div>
             @endforeach
+
+            <!-- コメント入力 -->
+            @can('admin-higher')
+            <p class="mt-6 mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">管理者入力用</p>
+            <form action="{{ route('patients.comments.store', $patient->id) }}" method="post">
+                @csrf
+                <div class="flex">
+                    <div class="form-group">
+                        <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary ml-6">リンクを共有</button>
+                </div>
+            </form>
+            @endcan
 
             <div class="flex items-center justify-end mt-4">
             <a href="{{ url()->previous() }}">
@@ -75,6 +81,7 @@
 </x-app-layout>
 
 <script>
+// リンクをクリックできるようにする
 document.addEventListener("DOMContentLoaded", () => {
     const commentElements = document.querySelectorAll(".comment-body");
 
@@ -89,6 +96,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         element.innerHTML = linkedText;
+    });
+});
+
+// リンクを青色で表示
+document.addEventListener("DOMContentLoaded", () => {
+    const commentLinks = document.querySelectorAll(".comment-body a");
+
+    commentLinks.forEach((link) => {
+        link.style.color = "blue";
+        link.style.textDecoration = "underline";
+    });
+});
+
+// リンクを折りたたみ表示
+document.addEventListener("DOMContentLoaded", () => {
+    const commentLinks = document.querySelectorAll(".comment-body a");
+
+    commentLinks.forEach((link) => {
+        link.style.color = "blue";
+        link.style.textDecoration = "underline";
+        link.style.wordBreak = "break-word";
     });
 });
 </script>
