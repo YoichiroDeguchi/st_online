@@ -11,7 +11,7 @@
 <body>
 <div class="flex items-center flex-col justify-center h-screen">
     <div class="text-center text-2xl font-bold mb-6">STオンライン</div>
-    <a class="px-6 py-3 bg-indigo-500 text-xl text-white font-semibold rounded hover:bg-indigo-600" href="{{ route('login') }}">ログイン</a>
+    <a class="px-6 py-3 bg-indigo-500 text-xl text-white rounded hover:bg-indigo-600" href="{{ route('login') }}">ログイン</a>
 </div>
 </body>
 </html>
