@@ -38,7 +38,7 @@
                 <!-- 新規利用者作成ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('patient.create')" :active="request()->routeIs('patient.create')">
-                        {{ __('新規利用者作成') }}
+                        {{ __('新規利用者登録') }}
                     </x-nav-link>
                 </div>
                 @endcan
@@ -64,7 +64,7 @@
                 <!-- 新規スタッフ作成ボタン -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('register')" :active="request()->routeIs('user.create')">
-                        {{ __('新規事業所作成') }}
+                        {{ __('新規事業所登録') }}
                     </x-nav-link>
                 </div>
                 @endcan
@@ -86,9 +86,9 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        {{-- <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
-                        </x-dropdown-link>
+                        </x-dropdown-link> --}}
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -97,7 +97,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('ログアウト') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

@@ -121,7 +121,7 @@ class PatientController extends Controller
     {
         //利用者データを削除
         $patient = Patient::find($id)->delete();
-        return redirect()->route('patient.index');
+        return redirect()->route('dashboard');
     }
 
     public function mydata()

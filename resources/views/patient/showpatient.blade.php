@@ -41,10 +41,10 @@
                     </div>
                     @can('admin-higher')
                     <div class="ml-6">
-                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="d-inline">
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post" onsubmit="return confirm('削除しますか？');" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                            <button type="submit" class="btn btn-danger btn-sm ml-6 bg-red-500 text-white text-sm py-1 px-2 rounded cursor-pointer">削除</button>
                         </form>
                     </div>
                     @endcan
@@ -54,24 +54,26 @@
             <!-- コメント入力 -->
             @can('admin-higher')
             <p class="mt-6 mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">管理者入力用</p>
-            <form action="{{ route('patients.comments.store', $patient->id) }}" method="post">
+            <form action="{{ route('patients.comments.store', $patient->id) }}" method="post" class="bg-gray-100 p-4 rounded-md mb-4">
                 @csrf
                 <div class="flex">
                     <div class="form-group">
-                        <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                        <textarea name="body" id="body" rows="3" class="form-control w-full p-2 border border-gray-300 rounded resize-none mb-2"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-6">リンクを共有</button>
+                    <div class="flex items-center">
+                        <button type="submit" class="btn btn-primary ml-6 bg-blue-500 text-white text-sm py-1 px-2 rounded cursor-pointer">リンクを共有</button>
+                    </div>
                 </div>
             </form>
             @endcan
 
-            <div class="flex items-center justify-end mt-4">
+            {{-- <div class="flex items-center justify-end mt-4">
             <a href="{{ url()->previous() }}">
               <x-secondary-button class="ml-3">
                 {{ __('戻る') }}
               </x-primary-button>
             </a>
-            </div>
+            </div> --}}
 
         </div>
         </div> 

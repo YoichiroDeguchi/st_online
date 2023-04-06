@@ -94,7 +94,7 @@
                                     <span aria-hidden="true" class="absolute inset-0 text-white bg-red-500 rounded-full opacity-50">
                                     </span>
                                     <span class="relative">
-                                        <form action="{{ route('delete_meeting', $meeting->id) }}" method="POST">
+                                        <form action="{{ route('delete_meeting', $meeting->id) }}" method="POST" onsubmit="return confirm('削除しますか？');">
                                             @csrf
                                             @method('DELETE')
                                             <button class="text-white" type="submit" class="btn btn-danger">予約取消</button>

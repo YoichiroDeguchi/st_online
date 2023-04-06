@@ -18,7 +18,7 @@
                     <P class="leading-relaxed text-lg">1.「オンライン同行申し込み」画面から希望日時を予約します。</P>
                     <P class="leading-relaxed text-lg">2.当日になったら電波が繋がるタブレットを準備し、「予約状況確認」画面の「訪問同行を開始」ボタンを押し、オンライン訪問同行を開始します。</P>
                     <P class="leading-relaxed text-lg">3.後日、利用者ごとの詳細ページに同行時の録画データをup致します（3営業日以内）。</P>
-                    <P class="leading-relaxed text-lg mt-6">※オンライン訪問同行を申し込む際は事前に該当利用者の新規作成をお願いします。</P>
+                    <P class="leading-relaxed text-lg mt-6">※オンライン訪問同行を申し込む際は事前に該当利用者の新規登録をお願いします。</P>
                     <div class="text-center">
                         <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
                     </div>

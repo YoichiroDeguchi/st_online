@@ -81,6 +81,6 @@ class ZoomMeetingController extends Controller
         //     return abort(403);
         // }
         $meeting->delete();
-        return redirect()->route('my_meetings')->with('success', 'ミーティングが削除されました。');
+        return redirect()->route('dashboard')->with('success', 'ミーティングが削除されました。');
     }
 }

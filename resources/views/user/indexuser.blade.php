@@ -33,7 +33,7 @@
                       </x-primary-button>
                     </form>
                     <!-- 削除ボタン -->
-                    <form action="{{ route('user.destroy',$user->id) }}" method="POST" class="text-left">
+                    <form action="{{ route('user.destroy',$user->id) }}" method="POST" class="text-left" onsubmit="return confirm('削除しますか？');">
                       @method('delete')
                       @csrf
                       <x-primary-button class="ml-3">

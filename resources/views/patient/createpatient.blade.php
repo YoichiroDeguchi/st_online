@@ -29,7 +29,7 @@
             </div>
             <div class="flex items-center justify-end mt-4">
               <x-primary-button class="ml-3">
-                {{ __('新規作成') }}
+                {{ __('新規登録') }}
               </x-primary-button>
             </div>
           </form>

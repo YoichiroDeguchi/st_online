@@ -41,7 +41,7 @@
                     <textarea class="block mt-1 w-full rounded-md" id="consultation" name="consultation" rows="4" cols="50" required></textarea>
                 </div>
                 <div class="text-center">
-                    <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">ミーティングを作成</button>
+                    <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">申し込み</button>
                 </div>
             </form>
         </div>
