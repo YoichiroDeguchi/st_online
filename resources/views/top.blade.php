@@ -12,7 +12,7 @@
     <div class="min-h-screen flex flex-col">
         <header class="p-6 bg-white shadow-md">
             <div class="container mx-auto flex justify-end items-center">
-                <a href="{{ route('login') }}" class="bg-indigo-500 text-white px-4 py-2 rounded">ログイン</a>
+                <a href="{{ route('login') }}" class="text-black px-4 py-2 rounded hover:bg-gray-200 transition-colors duration-200">ログイン</a>
             </div>
         </header>
         <div class="flex-grow flex items-center justify-center">
