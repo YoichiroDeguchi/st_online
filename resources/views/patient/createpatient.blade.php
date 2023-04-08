@@ -18,8 +18,8 @@
               <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
             <div class="flex flex-col mb-4">
-              <x-input-label for="birthdate" :value="__('生年月日（YYYY-MM-DD）')" />
-              <x-text-input id="birthdate" class="block mt-1 w-full" type="text" name="birthdate" :value="old('birthdate')" required autofocus />
+              <x-input-label for="birthdate" :value="__('生年月日')" />
+              <x-text-input id="birthdate" class="block mt-1 w-full" type="text" placeholder="YYYY-MM-DD" name="birthdate" :value="old('birthdate')" required autofocus />
               <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
             </div>
             <div class="flex flex-col mb-4">
