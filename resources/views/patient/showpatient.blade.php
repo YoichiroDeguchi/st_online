@@ -7,33 +7,33 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-6 bg-white border-b border-gray-200">
           <div class="mb-6">
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">名前</p>
-              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="name">
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800">名前</p>
+              <p class="py-2 px-3 text-gray-800" id="name">
                 {{$patient->name}}
               </p>
             </div>
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">生年月日</p>
-              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="birthdate">
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800">生年月日</p>
+              <p class="py-2 px-3 text-gray-800" id="birthdate">
                 {{$patient->birthdate}}
               </p>
             </div>
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">疾患名</p>
-              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="disease_name">
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800">疾患名</p>
+              <p class="py-2 px-3 text-gray-800" id="disease_name">
                 {{$patient->disease_name}}
               </p>
             </div>
 
             <!-- コメント一覧 -->
-            <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">録画リンク</p>
+            <p class="mb-2 uppercase font-bold text-lg text-gray-800">録画リンク</p>
             @foreach($patient->comments as $comment)
                 <div class="flex items-center">
                     <div class="w-3/4 mb-3">
@@ -53,7 +53,7 @@
 
             <!-- コメント入力 -->
             @can('admin-higher')
-            <p class="mt-6 mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">管理者入力用</p>
+            <p class="mt-6 mb-2 uppercase font-bold text-lg text-gray-800">管理者入力用</p>
             <form action="{{ route('patients.comments.store', $patient->id) }}" method="post" class="bg-gray-100 p-4 rounded-md mb-4">
                 @csrf
                 <div class="flex">

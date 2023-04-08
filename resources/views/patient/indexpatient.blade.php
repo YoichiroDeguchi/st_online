@@ -7,21 +7,21 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
-      <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white dark:bg-gray-800 border-b border-grey-200 dark:border-gray-800">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-6 bg-white border-b border-grey-200">
           <table class="text-center w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">利用者一覧</th>
+                <th class="py-4 px-6 bg-gray-lightest font-bold uppercase text-lg text-gray-dark border-b border-grey-light">利用者一覧</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($patients as $patient)
               <tr class="hover:bg-gray-lighter">
-                <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+                <td class="py-4 px-6 border-b border-gray-light">
                   <div class="flex">
                     <a href="{{ route('patient.show',$patient->id) }}">
-                        <h3 class="mt-3 text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$patient->name}}</h3>
+                        <h3 class="mt-3 text-left font-bold text-lg text-gray-dark">{{$patient->name}}</h3>
                     </a>
                     <!-- 更新ボタン -->
                     <form action="{{ route('patient.edit',$patient->id) }}" method="GET" class="ml-4 text-left">
@@ -33,7 +33,7 @@
                       </x-primary-button>
                     </form>
                     <!-- 削除ボタン -->
-                    <form action="{{ route('patient.destroy',$patient->id) }}" method="POST" onsubmit="return confirm('削除しますか？');" class="text-left">
+                    <form action="{{ route('patient.destroy',$patient->id) }}" method="POST" onsubmit="return confirm('削除しますか？');"class="text-left">
                       @method('delete')
                       @csrf
                       <x-primary-button class="ml-3">
